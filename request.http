@@ -1,2 +1,71 @@
+@token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5yZC5zZXJ2aWNlcyIsInN1YiI6Im5MRWJJNXRVb0x1MDBLSVhfcmF1cHZHV0VWSERlN1lGZlpBclBBckQ2ZU1AY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYXBwLnJkc3RhdGlvbi5jb20uYnIvYXBpL3YyLyIsImFwcF9uYW1lIjoiU2Fhc01lZGljbyIsImV4cCI6MTU5NDMxMTIwNSwiaWF0IjoxNTk0MjI0ODA1LCJzY29wZSI6IiJ9.W5GVNe0S2h5cXFcYzG_y_i9cuS5ToJuPcyJYyivoSlqhPQeo3Nv_Ka2iK1BlNJnwl7Dyafi6sJBgW2X4vuUewz3MUb2APGtyn026AckNiZuv1JSpIVSXabqMLI77qzHDEbyFvy7k4wfnYYHwgC3ah6aADRqR-4V9PuwltgP2Eq1tz2S1f4-vJ5bXshRK639p-UOS_9MWSSbQm-NaoJubeZQjHOLEeiL4QAbNK7ubhOvkEE13n5gKqgaHlMNGQpdJJLyhYnFSSIpVXVIWWsyymess__LrsYi5P5cMxHQAxj3Osib0Ckeyoalk0kfwVBMd73pgTJ35kePJUeeLOx75iw
 ###
 GET http://localhost:3000/callback?teste=gfsgf
+
+### Gerar code do RD Station
+GET https://api.rd.services/auth/dialog?client_id=313c33c4-33a9-4727-925c-23a1deb1efbf&redirect_url=https://conexa-webhook.herokuapp.com/callback
+
+### Obter token
+POST https://api.rd.services/auth/token
+Content-Type: application/json
+
+{
+  "client_id": "313c33c4-33a9-4727-925c-23a1deb1efbf",
+  "client_secret": "4b05ab521565446bba4b94a293956c55",
+  "code": "781b62a2646bc9dd4c136f3522a3714f"
+}
+
+
+### RD STATION - CRIACAO DE CUSTOM PARAM
+POST https://api.rd.services/platform/contacts/fields
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "api_identifier": "cf_situacao_cadastro",
+  "data_type": "STRING",
+  "label": {
+    "pt-BR": "Situação do cadastro na plataforma"
+  },
+  "name": {
+    "pt-BR": "Situação do cadastro na plataforma"
+  },
+  "presentation_type": "TEXT_INPUT"
+}
+
+### RD STATION - CRIAR CONTATO
+POST https://api.rd.services/platform/events
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5yZC5zZXJ2aWNlcyIsInN1YiI6Im5MRWJJNXRVb0x1MDBLSVhfcmF1cHZHV0VWSERlN1lGZlpBclBBckQ2ZU1AY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYXBwLnJkc3RhdGlvbi5jb20uYnIvYXBpL3YyLyIsImFwcF9uYW1lIjoiU2Fhc01lZGljbyIsImV4cCI6MTU5NDUwMTUyMywiaWF0IjoxNTk0NDE1MTIzLCJzY29wZSI6IiJ9.DtXcHa7hkfONcrn7ImtXZehwOB-g3OGDaGdB1kSmwexLyQYdVYPCRrw4DTpfvNwIQIQnXXESAzqO-mJsdIubmmLbjUhsBNx0TwpLifsaiFLuXVeKX6JgpsQWn2VHjqDZ0kaa36NhphznjOvhPCLAzZB2f5j76OVv9BZyDdxZ9wycM3l0bfPtE7dV2cuakDJwvknYNn0BXXMJb8dpzLACB2mvoML7keM-jev0fid4w0iNjE_RdnMjD57ViAYKvMMJQcM3S2coIJn6piWiFwCIOM2Hkl0bWScPYAvwd14mlfAvqvTEHHbEF8wtrnFnUkIUGse5p6s73YrXenZ1OWzEBw
+Content-Type: application/json
+
+{
+  "event_type": "CONVERSION",
+  "event_family": "CDP",
+  "payload": {
+    "conversion_identifier": "SaaS Médico- Conexa",
+    "traffic_source": "Landingpage - cadastro médico",
+    "traffic_campaign": "valor do info adicionais",
+    "mobile_phone": "999888777",
+    "conversion_identifier": "Cadastro SaaS",
+    "email": "tintim2@teste.com",
+    "name": "Tintim Teste 2",
+    "traffic_source": "TESTE Landing page 10/07/2020 20:00",
+    "cf_cpf": "11122233344",
+    "cf_data_nascimento": "26/04/1985",
+    "cf_crm": "111222",
+    "cf_uf_crm": "RJ",
+    "cf_memed_integrado": "sim",
+    "cf_crm_validado": "não",
+    "cf_situacao_cadastro": "Cadastro concluído, erro ao validar CRM"
+  }
+}
+
+### RD STATION - REFRESH TOKEN
+POST https://api.rd.services/auth/token
+Content-Type: application/json
+
+{
+  "client_id": "313c33c4-33a9-4727-925c-23a1deb1efbf",
+  "client_secret": "4b05ab521565446bba4b94a293956c55",
+  "refresh_token": "e0NlgPuvEyGKZnNdz4CNrbwB-avnaaX-wvV89Hf6_Ks"
+}

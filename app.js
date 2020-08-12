@@ -16,4 +16,10 @@ app.get('/callback', (req, res) => {
     return res.end()
 })
 
+app.post('/incident', (req, res) => {
+    const { body } = req
+    console.log(JSON.stringify(body))
+    return res.end()
+})
+
 module.exports = app
