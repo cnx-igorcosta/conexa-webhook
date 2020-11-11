@@ -22,4 +22,12 @@ app.post('/incident', (req, res) => {
     return res.end()
 })
 
+app.get('/blog', (req, res) => {
+    res.json([
+        { title: 'teste tintim', description: 'descricao blog' },
+        { title: 'Exame de próstata', description: 'Novembro azul' },
+        { title: 'Alimentação saudável', description: 'teste teste teste' },
+    ]).end()
+})
+
 module.exports = app
