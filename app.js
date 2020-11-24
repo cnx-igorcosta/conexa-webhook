@@ -32,4 +32,6 @@ app.get('/blog', (req, res) => {
     ]).end()
 })
 
+app.get("/teste", (req, res) => res.json(200));
+
 module.exports = app
