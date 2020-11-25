@@ -28,7 +28,7 @@ app.get('/blog', (req, res) => {
     let articles
     if (page === '1') {
         articles =[
-            { thumbnail: 'https://cdnuploads.aa.com.tr/uploads/Contents/2020/11/13/thumbs_b_c_1bf94b5f3b77b2dc7c0a19c3b39d798a.jpg?v=121023', url: 'https://www.aa.com.tr/en/asia-pacific/infections-peak-as-virus-rears-head-in-pakistan-again/2042493', title: 'Infections peak as virus rears head in Pakistan again', content: 'Governments "undue" claim of victory against COVID-19 made people, authorities careless, says health expert', created_date: '13/11/2020', active: true },
+            { thumbnail: 'https://cdnuploads.aa.com.tr/uploads/Contents/2020/11/13/thumbs_b_c_1bf94b5f3b77b2dc7c0a19c3b39d798a.jpg?v=121023', url: 'https://www.aa.com.tr/en/asia-pacific/infections-peak-as-virus-rears-head-in-pakistan-again/2042493', title: 'Infections peak as virus rears head in Pakistan again', content: '<p>Governments "undue"</p> <b>claim of victory</b> <span>against COVID-19</span> made people, authorities careless, says health expert', created_date: '13/11/2020', active: true },
             { thumbnail: 'https://cdnuploads.aa.com.tr/uploads/Contents/2020/11/13/thumbs_b_c_8daa0f794f72645a5141a1805e1b8d17.jpg?v=183012', url: 'https://www.aa.com.tr/en/health/football-irish-midfielder-browne-contracts-coronavirus/2043036', title: 'Football: Irish midfielder Browne contracts coronavirus', content: 'Alan Browne tests positive for COVID-19 after playing against England on Thursdays friendly game', created_date: '13/11/2020', active: true },
             { thumbnail: '', url: '', title: '', content: '', created_date: '10/10/2020', active: false },
         ]
